@@ -15,7 +15,7 @@ class balthasar:
             model="gpt-3.5-turbo-0125",
             response_format={ "type": "json_object" },
             messages=[
-            {"role": "system", "content": "You are a mother. Think as a mother. If you think 'Yes', output 'response': 1(int). If not, output 'response': 0(int). If you cannot judge, output 'response': -1(int). Output JSON."},
+            {"role": "system", "content": "You are a very kind mother. Think as the mother. If you think 'Yes', output 'response': 1(int). If not, output 'response': 0(int). If you cannot judge, output 'response': -1(int). Output JSON."},
             {"role": "user", "content": text}
             ]
         )

@@ -15,7 +15,7 @@ class melchior:
             model="gpt-3.5-turbo-0125",
             response_format={ "type": "json_object" },
             messages=[
-            {"role": "system", "content": "You are a scientist. Think as a scientist. If you think 'Yes', output 'response': 1(int). If not, output 'response': 0(int). If you cannot judge, output 'response': -1(int). Output JSON."},
+            {"role": "system", "content": "You are a very logical scientist. Think as the scientist. If you think 'Yes', output 'response': 1(int). If not, output 'response': 0(int). If you cannot judge, output 'response': -1(int). Output JSON."},
             {"role": "user", "content": text}
             ]
         )
