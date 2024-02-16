@@ -1,29 +1,35 @@
 import asyncio
-from melchior import melchior
-from balthasar import balthasar
-from casper import casper
+from melchior_1 import melchior
+from balthasar_2 import balthasar
+from casper_3 import casper
 
-class magi_integrate_system():
-    async def execute_melchior(text):
-        await melchior.execute(text)
-        return "Melchior task completed."
 
-    async def execute_balthasar(text):
-        await balthasar.execute(text)
-        return "Balthasar task completed."
+class magi_integrating_system:
+    async def execute_melchior(self, text: str):
+        self.melchior = melchior()
+        return await self.melchior.execute(text)
 
-    async def execute_casper(text):
-        await casper.execute(text)
-        return "Casper task completed."
+    async def execute_balthasar(self, text: str):
+        self.balthasar = balthasar()
+        return await self.balthasar.execute(text)
+
+    async def execute_casper(self, text: str):
+        self.casper = casper()
+        return await self.casper.execute(text)
 
     async def main(self):
-        text = input('input:')
-        # 非同期で関数を実行
-        results = await asyncio.gather(self.execute_melchior(text), self.execute_balthasar(text), self.execute_casper(text))
-        # 結果をプリント
+        self.text = input('input:')
+
+        results = await asyncio.gather(
+            self.execute_melchior(self.text),
+            self.execute_balthasar(self.text),
+            self.execute_casper(self.text)
+            )
+        results = {'melchior': results[0], 'balthasar': results[1], 'casper': results[2]}
+
         print(results)
+        return results
 
 
-# メイン関数を実行
-integrate = magi_integrate_system()
+integrate = magi_integrating_system()
 asyncio.run(integrate.main())

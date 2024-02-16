@@ -3,14 +3,14 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-import os
+import os, json, asyncio
 from openai import OpenAI
 
-class balthasar():
+class balthasar:
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
     client = OpenAI(api_key=OPENAI_API_KEY)
 
-    def execute(self, text: str):
+    async def execute(self, text: str):
         response = self.client.chat.completions.create(
             model="gpt-3.5-turbo-0125",
             response_format={ "type": "json_object" },
@@ -19,7 +19,14 @@ class balthasar():
             {"role": "user", "content": text}
             ]
         )
-        response = response.choices[0].message.content
+
+        print(response)
+        try:
+            response = json.loads(response.choices[0].message.content)
+            result = int(response['response'])
+        except:
+            result = 500
         print(response)
 
-        return response['response']
+        print('BALTHASAR・2 task completed.')
+        return result
